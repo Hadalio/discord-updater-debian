@@ -40,7 +40,7 @@ if version_gt "$latest_version" "$current_version"; then
     fi
 
     if [ -f discord.deb ]; then
-        sudo dpkg --install discord.deb && rm -f discord.deb
+        sudo dpkg --install discord.deb && sudo rm -f discord.deb
     else
         echo "Failed to download Discord."
         exit 1
