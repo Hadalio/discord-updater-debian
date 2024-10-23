@@ -32,15 +32,16 @@ if version_gt "$latest_version" "$current_version"; then
     echo -e "The latest version of Discord available is $latest_version.\n"
 
     # Update Discord
+    filename=$"discord_$latest_version.deb"
     if command -v wget > /dev/null 2>&1; then
-        sudo wget --show-progress -O discord.deb "$redirect_url"
+        sudo wget --show-progress -O "$filename" "$redirect_url"
     else
         echo "wget not found. Please install wget to proceed."
         exit 1
     fi
 
-    if [ -f discord.deb ]; then
-        sudo dpkg --install discord.deb && sudo rm -f discord.deb
+    if [ -f "$filename" ]; then
+        sudo dpkg --install "$filename" && sudo rm -f "$filename"
     else
         echo "Failed to download Discord."
         exit 1
